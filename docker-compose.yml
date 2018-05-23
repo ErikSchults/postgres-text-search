@@ -1,12 +1,11 @@
-version: '2.1'
-
+version: '3'
 services:
-  go-postgre-text-search:
+  postgre-text-search:
     build: .
-    command: sh -c "go build && ./app"
+    command: sh -c "cd ${GO_PROJECT_DIR}/app && realize start"
     volumes:
-      - './app:/go/src/app'
-    environment:
-      - PORT=9911
+      - .:${GO_PROJECT_DIR}
     ports:
       - 9911:9911
+    environment:
+      - GO_WORK_DIR=${GO_PROJECT_DIR}/app

@@ -1,9 +1,15 @@
-FROM golang
+FROM golang:alpine
 
-WORKDIR /go/src/app
-COPY ./app /go/src/app
+RUN apk add --no-cache ca-certificates \
+        dpkg \
+        gcc \
+        git \
+        musl-dev \
+        bash
 
-RUN go get ./
-RUN go build
-	
-EXPOSE 9911
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
+RUN go get github.com/tockins/realize
+
+WORKDIR $GOPATH

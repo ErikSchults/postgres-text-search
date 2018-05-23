@@ -4,15 +4,14 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 )
 
 func index(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte("Hello!!!"))
+	w.Write([]byte("Hello!!!!!"))
 }
 
 func startApp() {
-	fmt.Println("Postgre text search running on port " + os.Getenv("PORT"))
+	fmt.Println("Postgre text search running on port 9911")
 	http.HandleFunc("/", index)
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+	log.Fatal(http.ListenAndServe(":9911", nil))
 }
