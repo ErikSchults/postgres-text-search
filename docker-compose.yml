@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  go-postgre-text-search:
+    build: .
+    command: sh -c "go build && ./app"
+    volumes:
+      - './app:/go/src/app'
+    environment:
+      - PORT=9911
+    ports:
+      - 9911:9911
