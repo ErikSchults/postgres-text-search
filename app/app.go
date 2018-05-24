@@ -5,17 +5,15 @@ import (
 	"net/http"
 
 	"github.com/erikschults/go-postgre-text-search/app/database"
+	"github.com/erikschults/go-postgre-text-search/app/routes"
 )
-
-func index(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte("Hello!!!!!"))
-}
 
 func startApp() {
 	database.DBCon = database.New()
 	database.Migrate()
 
-	http.HandleFunc("/", index)
+	routes.RegisterRoutes()
+
 	listen("9911")
 }
 
