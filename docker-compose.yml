@@ -9,3 +9,12 @@ services:
       - 9911:9911
     environment:
       - GO_WORK_DIR=${GO_PROJECT_DIR}/app
+
+  db_textsearch:
+    image: postgres
+    environment:
+      POSTGRES_USER: textsearch
+      POSTGRES_PASSWORD: supersecret
+      POSTGRES_DB: db_textsearch
+    ports:
+      - 5432:5432

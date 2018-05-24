@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
+
+	"github.com/erikschults/go-postgre-text-search/app/database"
+	_ "github.com/lib/pq"
 )
 
 func index(w http.ResponseWriter, req *http.Request) {
@@ -11,7 +13,17 @@ func index(w http.ResponseWriter, req *http.Request) {
 }
 
 func startApp() {
-	fmt.Println("Postgre text search running on port 9911")
 	http.HandleFunc("/", index)
-	log.Fatal(http.ListenAndServe(":9911", nil))
+
+	database.New()
+	listen("9911")
+}
+
+func listen(port string) {
+	done := make(chan bool)
+
+	go http.ListenAndServe(":"+port, nil)
+	fmt.Println("Postgre text search running on port " + port)
+
+	<-done
 }

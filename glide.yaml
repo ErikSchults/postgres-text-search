@@ -1,0 +1,5 @@
+package: github.com/erikschults/go-postgre-text-search
+import:
+- package: github.com/golang-migrate/migrate
+  version: ^3.2.0
+- package: github.com/lib/pq

@@ -1,0 +1,10 @@
+hash: e7eff797454c916af6a3c9365d84175006dd4441c5af68c4aed029d2d628417c
+updated: 2018-05-23T19:48:39.175267+03:00
+imports:
+- name: github.com/golang-migrate/migrate
+  version: 22f249514de9aa3f8a720a7cabbdd45d294f83a1
+- name: github.com/lib/pq
+  version: 0677bdde3e15a69060c33fac24fd53044b4694b8
+  subpackages:
+  - oid
+testImports: []
