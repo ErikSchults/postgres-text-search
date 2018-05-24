@@ -9,6 +9,7 @@ services:
       - 9911:9911
     environment:
       - GO_WORK_DIR=${GO_PROJECT_DIR}/app
+      - GO_PROJECT_DIR=${GO_PROJECT_DIR}
 
   db_textsearch:
     image: postgres
